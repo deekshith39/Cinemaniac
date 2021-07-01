@@ -4,9 +4,9 @@ import pandas as pd
 from math import sqrt
 
 def get_data():
-    movies_df = pd.read_csv(r'ml-100k\movies.csv')
+    movies_df = pd.read_csv('movies.csv')
 
-    ratings_df = pd.read_csv(r'ml-100k\ratings.csv')
+    ratings_df = pd.read_csv('ratings.csv')
 
     movies_df.head()
 
