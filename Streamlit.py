@@ -1,33 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Content Based Filtering
-
-# This algorithm recommends movies which are similar to the ones that user liked before.
-#
-# For example, if a person has liked the movie “Inception”, then this algorithm will recommend movies that fall under the same genre.
-
-# ![contentbased.png](attachment:contentbased.png)
-
-# ### Dataset
-
-# This dataset (ml-latest) describes 5-star rating and free-text tagging activity from [MovieLens](http://movielens.org), a movie recommendation service.
-#
-# It contains 22884377 ratings and 586994 tag applications across 34208 movies which was created by 247753 users.
-
 import streamlit as st
 import pandas as pd
-import numpy as np
-from surprise import accuracy
+
 from math import sqrt
-import time
-from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
 
 def get_data():
-    movies_df = pd.read_csv(r'C:\Users\P Sai Deekshith\Recommender Systems\ml-100k\movies.csv')
+    movies_df = pd.read_csv(r'ml-100k\movies.csv')
 
-    ratings_df = pd.read_csv(r'C:\Users\P Sai Deekshith\Recommender Systems\ml-100k\ratings.csv')
+    ratings_df = pd.read_csv(r'ml-100k\ratings.csv')
 
     movies_df.head()
 
@@ -203,9 +182,11 @@ if __name__ == '__main__':
     userInput = getUserInput(movies_df, ratings_df)
     st.sidebar.text("")
     st.sidebar.text("")
-    st.sidebar.write("Content Based algorithm recommends movies which are similar to the ones that user liked before. For example, if a person has liked the movie “Inception”, then this algorithm will recommend movies that fall under the same genre. [read more..](https://developers.google.com/machine-learning/recommendation/content-based/basics)")
+    st.sidebar.write("Content Based algorithm recommends movies which are similar to the ones that user liked before. For example, if a person has liked the movie “Inception”, then this algorithm will recommend movies that fall under the same genre [read more..](https://developers.google.com/machine-learning/recommendation/content-based/basics)")
     st.sidebar.text("")
-    st.sidebar.write("Collaborative Filtering technique we're going to take a look at is Collaborative filtering. It is based on the fact that relationships exist between products and people's interests. [read more..](https://developers.google.com/machine-learning/recommendation/collaborative/basics)")
+    st.sidebar.write("Collaborative Filtering technique we're going to take a look at is Collaborative filtering. It is based on the fact that relationships exist between products and people's interests [read more..](https://developers.google.com/machine-learning/recommendation/collaborative/basics)")
+    st.sidebar.text("")
+    st.sidebar.write("To see a comparison on various techniques, check out my [Github Repo](https://github.com/deekshith39/Cinemaniac)")
     if st.button("RECOMMEND"):
         if selection == 'Content Based Filtering':
             contentBased(userInput, moviesWithGenres_df, movies_df)
